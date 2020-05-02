@@ -12,10 +12,10 @@
     <h1> Cadastrar</h1>
     
     <form method="POST">
-    <input type="text" placeholder="Nome completo" maxlength="50">
-    <input type="email" placeholder="Usuário" maxlength="100">  
-    <input type = "password" placeholder="Senha" maxlength="50">
-    <input type = "password" placeholder="Confirmar Senha" maxlength="50"> 
+    <input type="text" name = "nome" placeholder="Nome completo" maxlength="50">
+    <input type="email"  name = "email" placeholder="Usuário" maxlength="100">  
+    <input type = "password" name = "senha" placeholder="Senha" maxlength="50">
+    <input type = "password" name = "confSenha"placeholder="Confirmar Senha" maxlength="50"> 
  
     <input type ="submit" value="Cadastrar">
     
