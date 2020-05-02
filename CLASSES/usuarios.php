@@ -61,10 +61,29 @@ Class Usuario
     {
         global $pdo;
         global $msgErro;
+
+        //verificar se o email e senha estão cadastrados
+        $sql = $pdo->prepare("SELECT id FROM usuarios WHERE email = :e AND senha = :s ");
+        $sql->bindValue(":e",$email);
+        $sql->bindValue(":s",$senha);
+        $sql->execute();
+        if($sql->rowCount()>0)
+        {
+            //pessoa cadastrada, então pode acessar a página privada
+            //transformando dado do banco em um array
+            $dado = $sql->fetch();
+            session_start();
+            $_SESSION['id'] = $dado[''];
+            //id do usuário está armazenado na sessão.
+            return true; //logado com sucesso
+
+        }else{
+            return false; //não conseguiu logar
+
+        }
+        //entrar no sistema
+
+
     }
 
 }
-
-
-
-?>
