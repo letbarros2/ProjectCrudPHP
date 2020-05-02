@@ -11,7 +11,7 @@
     
     <h1> Cadastrar</h1>
     
-    <form method="POST" action="processa.php">
+    <form method="POST">
     <input type="text" placeholder="Nome completo">
       
 
