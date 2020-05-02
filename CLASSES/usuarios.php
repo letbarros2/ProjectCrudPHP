@@ -22,7 +22,7 @@ Class Usuario
 
     }
 
-    public function cadastar($nome,$email,$senha)
+    public function cadastrar($nome,$email,$senha)
     {
         global $pdo;
         //global $msgErro;
@@ -33,17 +33,18 @@ Class Usuario
         $sql->bindValue(":e",$email);
         $sql->execute();
         //se existe algo na linha pq o row está contando as linhas
-        if($sql->rowCount()>0){
+        if($sql->rowCount() > 0){
 
             return false; //usuario cadastrado
         }
         else
         {
             // usuario não cadastrado, cadastrar
-            $sql = $pdo->prepare("INSERT INTO usuarios(nome,email,senha) VALUES (:n, e:, s:)");
+           // $sql = $pdo->prepare("INSERT INTO usuarios (id, nome,email,senha) VALUES (NULL, :n, e:, :s)");
+           $sql = $pdo-> prepare( "INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`) VALUES (NULL, :n, :e, :s)");
             $sql->bindValue(":n",$nome);
             $sql->bindValue(":e",$email);
-            $sql->bindValue(":s",$senha);
+            $sql->bindValue(":s",md5($senha));
             $sql->execute();
             return true; //cadastrado com sucesso.
 
@@ -65,7 +66,7 @@ Class Usuario
         //verificar se o email e senha estão cadastrados
         $sql = $pdo->prepare("SELECT id FROM usuarios WHERE email = :e AND senha = :s ");
         $sql->bindValue(":e",$email);
-        $sql->bindValue(":s",$senha);
+        $sql->bindValue(":s",md5($senha));
         $sql->execute();
         if($sql->rowCount()>0)
         {
@@ -82,8 +83,5 @@ Class Usuario
 
         }
         //entrar no sistema
-
-
     }
-
 }
