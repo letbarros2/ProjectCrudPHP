@@ -16,7 +16,7 @@ $u = new Usuario;
     
     <h1> Entrar</h1>
     
-    <form method="POST">
+    <form method="POST" >
     
     <input type="email" placeholder="Usuário" name = "email">  
     <input type = "password" placeholder="Senha" name = "senha"> 
@@ -29,7 +29,7 @@ $u = new Usuario;
 
     <?php
     
-    if (isset($_POST['email']))
+    if(isset($_POST['email']))
     {
 
         $email = addslashes( $_POST['email']);
@@ -43,7 +43,7 @@ $u = new Usuario;
                 
             if ($u->logar($email,$senha))
             {
-                header("location: areaPrivada.php");
+                header("Location: AreaPrivada.php");
             }
             else
             {
@@ -65,22 +65,13 @@ $u = new Usuario;
         
     }else
     {
-                ?>
-                <div class="msg-erro">
-                preencha todos os campos
-                </div>
-                <?php
-     
+            ?>
+            <div class="msg-erro">
+            preencha todos os campos
+            </div>
+            <?php    
     }
-}
-    
+}  
     ?>
-
 </body>
-
-
-
-
-
-
 </html>
