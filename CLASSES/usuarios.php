@@ -40,7 +40,7 @@ Class Usuario
         else
         {
             // usuario não cadastrado, cadastrar
-           // $sql = $pdo->prepare("INSERT INTO usuarios (id, nome,email,senha) VALUES (NULL, :n, e:, :s)");
+           
            $sql = $pdo-> prepare( "INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`) VALUES (NULL, :n, :e, :s)");
             $sql->bindValue(":n",$nome);
             $sql->bindValue(":e",$email);
